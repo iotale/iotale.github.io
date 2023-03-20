@@ -71,16 +71,13 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
     <div id="menu" class="book-menu hide">
   <ul>
-<li><a href="/iotale.github.io">Home</a></li>
+<li><a href="/">首页</a></li>
 </ul>
-<h1 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h1><ul>
-<li><a href="/iotale.github.io/demo/menu-realtime">Menu Realtime Demo</a></li>
-</ul>
-<h2 id="render"><a href="#render" class="headerlink" title="render"></a>render</h2><ul>
-<li><a href="/iotale.github.io/demo/render/markdown-it-demo">markdown-it demo</a></li>
-<li><a href="/iotale.github.io/demo/render/katex-demo">katex demo</a></li>
-<li><a href="/iotale.github.io/demo/render/footnotes-demo">footnotes demo</a></li>
-<li><a href="/iotale.github.io/demo/render/md-container">markdown-container</a></li>
+<h1 id="2023"><a href="#2023" class="headerlink" title="2023"></a>2023</h1><h2 id="03"><a href="#03" class="headerlink" title="03"></a>03</h2><ul>
+<li><a href="/2023/03/demo/markdown-it-demo">markdown-it demo</a></li>
+<li><a href="/2023/03/demo/katex-demo">katex demo</a></li>
+<li><a href="/2023/03/demo/footnotes-demo">footnotes demo</a></li>
+<li><a href="/2023/03/demo/md-container">markdown-container</a></li>
 </ul>
 
 </div>
@@ -139,12 +136,35 @@ function sidebar_toggle() {
         </div>
         <div class="book-content">
           <div class="book-post">
-  <h1 id="Markdown-Container"><a href="#Markdown-Container" class="headerlink" title="Markdown Container"></a>Markdown Container</h1><p>::: note<br><em>note</em><br>:::</p>
-<p>::: tip<br><em>tip</em><br>:::</p>
-<p>::: attention<br><em>attention</em><br>:::</p>
+  <h1 id="Examples-mathematical-typesetting"><a href="#Examples-mathematical-typesetting" class="headerlink" title="Examples - mathematical typesetting"></a>Examples - mathematical typesetting</h1><h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h2><p>If the text between <code>$$</code> contains newlines it will rendered in display mode:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">f(x) = \int_&#123;-\infty&#125;^\infty\hat f(\xi)\,e^&#123;2 \pi i \xi x&#125;\,d\xi</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+
+<p>$$<br>f(x) &#x3D; \int_{-\infty}^\infty\hat f(\xi),e^{2 \pi i \xi x},d\xi<br>$$</p>
+<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\frac&#123;1&#125;&#123;\Bigl(\sqrt&#123;\phi \sqrt&#123;5&#125;&#125;-\phi\Bigr) e^&#123;\frac25 \pi&#125;&#125; = 1+\frac&#123;e^&#123;-2\pi&#125;&#125; &#123;1+\frac&#123;e^&#123;-4\pi&#125;&#125; &#123;1+\frac&#123;e^&#123;-6\pi&#125;&#125; &#123;1+\frac&#123;e^&#123;-8\pi&#125;&#125; &#123;1+\cdots&#125; &#125; &#125; &#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+
+<p>$$<br>\frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} &#x3D; 1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}} {1+\frac{e^{-8\pi}} {1+\cdots} } } }<br>$$</p>
+<h2 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">1 +  \frac&#123;q^2&#125;&#123;(1-q)&#125;+\frac&#123;q^6&#125;&#123;(1-q)(1-q^2)&#125;+\cdots = \prod_&#123;j=0&#125;^&#123;\infty&#125;\frac&#123;1&#125;&#123;(1-q^&#123;5j+2&#125;)(1-q^&#123;5j+3&#125;)&#125;, \quad\quad \text&#123;for &#125;\lvert q\rvert&lt;1.</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+
+<p>$$<br>1 +  \frac{q^2}{(1-q)}+\frac{q^6}{(1-q)(1-q^2)}+\cdots &#x3D; \prod_{j&#x3D;0}^{\infty}\frac{1}{(1-q^{5j+2})(1-q^{5j+3})}, \quad\quad \text{for }\lvert q\rvert&lt;1.<br>$$</p>
 
 </div>
 
+
+  <div class="book-comments">
+    
+<script src="https://utteranc.es/client.js"
+        repo="iotale/iotale.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+
+  </div>
 
 
 
@@ -162,10 +182,8 @@ function sidebar_toggle() {
     <!-- Author image -->
     <div class="author-img">
       
-        <figure
-          class="avatar avatar-lg"
-          data-initial="A"
-          style="background-color: #3b4351;">
+        <figure class="avatar avatar-lg">
+          <img src="/images/avatar.png" alt="...">
         </figure>
       
     </div>
