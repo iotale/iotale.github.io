@@ -1,0 +1,31 @@
+home_page: home.md        # filepath under /source/
+menu_page: menu.md        # filepath under /source/
+author_img:               # filepath of author image
+favicon_url: favicon.png  # filepath of favicon
+
+zoom_image: true
+codeblock:
+  # Code Highlight theme
+  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic
+  highlight_theme: normal
+
+comments:
+  utterances:
+    enable: false
+    user: # your github user name
+    repo: # your github repo name
+    theme: github-light # github-light | github-dark | github-dark-orange | icy-dark | dark-blue | photon-dark
+  disqus:
+    enable: false
+    shortname: # your disqus shortname
+  gitalk: # 基于 Preact 开发的类 Github Issue 的评论组件
+    enable: true
+    githubID: 13507637 # your github id，通过 https://api.github.com/users/iotale 获取
+    repo: iotale.github.io # GitHub repository e.g. kaiiiz.github.io
+    ClientID: d7afe73d74767cbe4a7a # GitHub Application Client ID
+    ClientSecret: 23cf9763dcb1139e95f0065fbd9b9c7ee190e0f7 # GitHub Application Client Secret
+    adminUser: iotale # GitHub repository owner and collaborators
+    labels: 'gitalk' # GitHub issue labels
+    distractionFreeMode: true
+
+google_analytics: G-PNM9Q1PJJL # UA-XXXXX-Y
