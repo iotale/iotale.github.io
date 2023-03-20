@@ -104,8 +104,9 @@ theme: book
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/iotale/iotale.github.io
+  repo: git@github.com:iotale/iotale.github.io.git
   branch: gh-pages
+  token: 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
 
 # Customization Markdown Renderer
 markdown:
