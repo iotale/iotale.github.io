@@ -116,7 +116,6 @@ markdown:
     linkify: true # Returns text links as text.
     typographer: true # Substitution of common typographical elements will take place.
     quotes: '“”‘’' # "double" will be turned into “single”
-    # 'single' will be turned into ‘single’
   plugins:
     - markdown-it-abbr
     - markdown-it-container
@@ -131,6 +130,12 @@ markdown:
     - markdown-it-sup
     - markdown-it-checkbox
     - markdown-it-katex
+    - name: markdown-it-container
+      options: note
+    - name: markdown-it-container
+      options: tip
+    - name: markdown-it-container
+      options: attention
   anchors:
     # Minimum level for ID creation. (Ex. h2 to h6)
     level: 1
