@@ -20,6 +20,7 @@ specifiers:
   markdown-it-footnote: ^3.0.3
   markdown-it-imsize: ^2.0.1
   markdown-it-ins: ^3.0.1
+  markdown-it-katex: ^2.0.3
   markdown-it-mark: ^3.0.1
   markdown-it-regexp: ^0.4.0
   markdown-it-sub: ^1.0.0
@@ -45,6 +46,7 @@ dependencies:
   markdown-it-footnote: 3.0.3
   markdown-it-imsize: 2.0.1
   markdown-it-ins: 3.0.1
+  markdown-it-katex: 2.0.3
   markdown-it-mark: 3.0.1
   markdown-it-regexp: 0.4.0
   markdown-it-sub: 1.0.0
@@ -1030,6 +1032,13 @@ packages:
     engines: {'0': node >= 0.2.0}
     dev: false
 
+  /katex/0.6.0:
+    resolution: {integrity: sha512-rS4mY3SvHYg5LtQV6RBcK0if7ur6plyEukAOV+jGGPqFImuzu8fHL6M752iBmRGoUyF0bhZbAPoezehn7xYksA==}
+    hasBin: true
+    dependencies:
+      match-at: 0.1.1
+    dev: false
+
   /levn/0.3.0:
     resolution: {integrity: sha512-0OO4y2iOHix2W6ujICbKIaEQXvFQHue65vUG3pb5EUomzPI90z9hsA1VsO/dbIIpC53J8gxM9Q4Oho0jrCM/yA==}
     engines: {node: '>= 0.8.0'}
@@ -1104,6 +1113,12 @@ packages:
     resolution: {integrity: sha512-32SSfZqSzqyAmmQ4SHvhxbFqSzPDqsZgMHDwxqPzp+v+t8RsmqsBZRG+RfRQskJko9PfKC2/oxyOs4Yg/CfiRw==}
     dev: false
 
+  /markdown-it-katex/2.0.3:
+    resolution: {integrity: sha512-nUkkMtRWeg7OpdflamflE/Ho/pWl64Lk9wNBKOmaj33XkQdumhXAIYhI0WO03GeiycPCsxbmX536V5NEXpC3Ng==}
+    dependencies:
+      katex: 0.6.0
+    dev: false
+
   /markdown-it-mark/3.0.1:
     resolution: {integrity: sha512-HyxjAu6BRsdt6Xcv6TKVQnkz/E70TdGXEFHRYBGLncRE9lBFwDNLVtFojKxjJWgJ+5XxUwLaHXy+2sGBbDn+4A==}
     dev: false
@@ -1135,6 +1150,10 @@ packages:
     resolution: {integrity: sha512-yr8hSKa3Fv4D3jdZmtMMPghgVt6TWbk86WQaWhDloQjRSQhMMYCAro7jP7VDJrjjdV8pxVxMssXS8B8Y5DZ5aw==}
     engines: {node: '>= 12'}
     hasBin: true
+    dev: false
+
+  /match-at/0.1.1:
+    resolution: {integrity: sha512-h4Yd392z9mST+dzc+yjuybOGFNOZjmXIPKWjxBd1Bb23r4SmDOsk2NYCU2BMUBGbSpZqwVsZYNq26QS3xfaT3Q==}
     dev: false
 
   /mdurl/1.0.1:

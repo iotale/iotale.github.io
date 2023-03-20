@@ -1,12 +1,10 @@
-* [Home](/iotale.github.io)
+* [首页](/)
 
-# DEMO
+# 2023
 
-* [Menu Realtime Demo](/iotale.github.io/demo/menu-realtime)
+## 03
 
-## render
-
-* [markdown-it demo](/iotale.github.io/demo/render/markdown-it-demo)
-* [katex demo](/iotale.github.io/demo/render/katex-demo)
-* [footnotes demo](/iotale.github.io/demo/render/footnotes-demo)
-* [markdown-container](/iotale.github.io/demo/render/md-container)
+* [markdown-it demo](/2023/03/demo/markdown-it-demo)
+* [katex demo](/2023/03/demo/katex-demo)
+* [footnotes demo](/2023/03/demo/footnotes-demo)
+* [markdown-container](/2023/03/demo/md-container)

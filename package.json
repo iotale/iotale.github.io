@@ -6,7 +6,8 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "server": "hexo server",
+    "start": "pnpm run clean && pnpm run build && pnpm run server"
   },
   "hexo": {
     "version": "6.3.0"
@@ -31,6 +32,7 @@
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-imsize": "^2.0.1",
     "markdown-it-ins": "^3.0.1",
+    "markdown-it-katex": "^2.0.3",
     "markdown-it-mark": "^3.0.1",
     "markdown-it-regexp": "^0.4.0",
     "markdown-it-sub": "^1.0.0",
