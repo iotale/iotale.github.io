@@ -1,7 +1,7 @@
 ---
 title: 因为一个主题折腾一回 Hexo
-date: 2023-03-20 20:02:45
-tags: Hexo,Jest,Github Action
+date: 2023-03-25
+tags: [Hexo,Jest,GithubAction]
 ---
 
 
@@ -335,6 +335,18 @@ markdown:
   ```
 
 <img src="https://cdn.jsdelivr.net/gh/iotale/pic@master/uPic/image-20230325155905693.png" alt="image-20230325155905693" style="zoom:50%;" />
+
+##### 无从下手的 post 头信息
+
+```markdown
+---
+title: 因为一个主题折腾一回 Hexo
+date: 2023-03-25
+tags: [Hexo,Jest,GithubAction]
+---
+```
+
+- tags 要写成数组格式，真的无语，而且无文档说明，指南靠试
 
 ### 配置评论系统
 
