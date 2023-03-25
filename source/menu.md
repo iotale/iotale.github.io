@@ -1,10 +1,7 @@
 * [首页](/)
 
-# 2023
+# 贰零贰叁
 
-## 03
+## 烟花三月下扬州
 
-* [markdown-it demo](/2023/03/demo/markdown-it-demo)
-* [katex demo](/2023/03/demo/katex-demo)
-* [footnotes demo](/2023/03/demo/footnotes-demo)
-* [markdown-container](/2023/03/demo/md-container)
+* [折腾Hexo记录](/2023/03/get_started_with_hexo_quickly)

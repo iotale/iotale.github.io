@@ -118,7 +118,6 @@ markdown:
     quotes: '“”‘’' # "double" will be turned into “single”
   plugins:
     - markdown-it-abbr
-    - markdown-it-container
     - markdown-it-deflist
     - markdown-it-emoji
     - markdown-it-footnote
@@ -129,13 +128,17 @@ markdown:
     - markdown-it-sub
     - markdown-it-sup
     - markdown-it-checkbox
-    - markdown-it-katex
+    - '@iktakahiro/markdown-it-katex'
     - name: markdown-it-container
       options: note
     - name: markdown-it-container
       options: tip
     - name: markdown-it-container
       options: attention
+    - name: markdown-it-container
+      options: warning
+    - name: markdown-it-container
+      options: danger
   anchors:
     # Minimum level for ID creation. (Ex. h2 to h6)
     level: 1

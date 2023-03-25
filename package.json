@@ -13,6 +13,7 @@
     "version": "6.3.0"
   },
   "dependencies": {
+    "@iktakahiro/markdown-it-katex": "^4.0.1",
     "hexo": "^6.3.0",
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
@@ -22,7 +23,6 @@
     "hexo-renderer-dartsass-next": "^0.1.0",
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-markdown-it": "^7.0.0",
-    "hexo-renderer-marked": "^6.0.0",
     "hexo-server": "^3.0.0",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-checkbox": "^1.1.0",
@@ -32,7 +32,6 @@
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-imsize": "^2.0.1",
     "markdown-it-ins": "^3.0.1",
-    "markdown-it-katex": "^2.0.3",
     "markdown-it-mark": "^3.0.1",
     "markdown-it-regexp": "^0.4.0",
     "markdown-it-sub": "^1.0.0",

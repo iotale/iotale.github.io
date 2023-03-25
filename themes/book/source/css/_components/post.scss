@@ -152,6 +152,14 @@
     @include md-container(#f0b37e, #ffedcc)
   }
 
+  .warning {
+    @include md-container(#ff8, #fff6cd)
+  }
+
+  .danger {
+    @include md-container(#f32013, #fdd2d0)
+  }
+
   .video-container {
     position: relative;
     margin-bottom: 1.5rem;

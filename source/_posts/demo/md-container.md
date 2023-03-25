@@ -16,3 +16,10 @@ comments: false
 *attention*
 :::
 
+::: warning
+*warning*
+:::
+
+::: danger
+*danger*
+:::
