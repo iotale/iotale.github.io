@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.ico" />
+    
+
+    <title>
+        
+          因为一个主题折腾一回 Hexo - Oolong Tea
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PNM9Q1PJJL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PNM9Q1PJJL');
+</script>
+<!-- End Google Analytics -->
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.ico">
+    <span>OOLONG TEA</span>
+  </a>
+</div>
+    <div id="menu" class="book-menu hide">
+  <ul>
+<li><a href="/">首页</a></li>
+</ul>
+<h1 id="贰零贰叁">贰零贰叁</h1>
+<h2 id="烟花三月下扬州">烟花三月下扬州</h2>
+<ul>
+<li><a href="/2023/03/get_started_with_hexo_quickly">折腾Hexo记录</a></li>
+</ul>
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <h2 id="背景介绍">背景介绍</h2>
+<p>偶尔看到一个blog，发现整体简洁实用。就想着部署一个 Github Pages。主题是 <a target="_blank" rel="noopener" href="https://github.com/kaiiiz/hexo-theme-book">hexo-theme-book</a>。不过作者转 Hugo 了，也不怎么维护这个仓库了。</p>
+<p>作为这个主题的第一篇文章，干脆记录下这个主题部署起来的一些问题。</p>
+<h2 id="Hexo">Hexo</h2>
+<p>概念介绍就不多提及了。安装过程参考官网文档即可。</p>
+<blockquote>
+<p>我使用的是 node.js corepack 自带的 pnpm 包管理器，所以全文安装依赖均使用 pnpm 方式。</p>
+<p>环境：node@v18.12.0，pnpm@v7.28.0</p>
+<p>版本：hexo@v6.3.0</p>
+</blockquote>
+<h3 id="装不上的-hexo-renderer-scss">装不上的 <code>hexo-renderer-scss</code></h3>
+<p>通过 <code>hexo init</code> 生成的项目默认安装的 <code>hexo-renderer-stylus</code>，而该主题使用 Sass 预处理样式文件开发，所以需要提前安装 Sass 的渲染器，主题文档中使用的是 <code>hexo-renderer-scss</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm add hexo-renderer-scss</span><br></pre></td></tr></table></figure>
+<p>不出意外的报错了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">node_modules/.pnpm/node-sass@4.14.1/node_modules/node-sass postintsall</span><br><span class="line">// ...</span><br><span class="line">make: *** [Release/obj.target/binding/src/binding.o] Error 1</span><br><span class="line">│ gyp ERR! build error</span><br><span class="line">│ gyp ERR! stack Error: `make` failed with exit code: 2</span><br></pre></td></tr></table></figure>
+<p>原因是 node 版本太高了，而 node-sass@4.14.1 需要 nodejs@v14 版本，版本不匹配。</p>
+<h4 id="node-sass-和-node-版本需要匹配">node-sass 和 node 版本需要匹配</h4>
+<table>
+<thead>
+<tr>
+<th>NodeJS</th>
+<th>Supported node-sass version</th>
+<th>Node Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node 18</td>
+<td>8.0+</td>
+<td>108</td>
+</tr>
+<tr>
+<td>Node 15</td>
+<td>5.0+, &lt;7.0</td>
+<td>88</td>
+</tr>
+<tr>
+<td>Node 14</td>
+<td>4.14+</td>
+<td>83</td>
+</tr>
+</tbody>
+</table>
+<p>将 node 降低到 14 版本（14.21.1），然后再次安装就可以了（近期作者有升级 node-sass 的版本依赖到 7，但是没有发布新的 release）。</p>
+<p>使用 <code>hexo server</code> 本地跑起来，结果又报错了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FATAL Something&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span><br><span class="line">TypeError: Cannot read property &#x27;path&#x27; of undefined</span><br><span class="line">    at Hexo.&lt;anonymous&gt; (/xxx/themes/book/scripts/render.js:52:31)</span><br></pre></td></tr></table></figure>
+<p>还好可以追踪到报错的位置 <code>themes/book/scripts/render.js:52:31</code>。查看代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;after_generate&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  hexo.<span class="property">route</span>.<span class="title function_">remove</span>(home_file.<span class="property">path</span>);</span><br><span class="line">  hexo.<span class="property">route</span>.<span class="title function_">remove</span>(menu_file.<span class="property">path</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>大概猜到是这两个文件没有匹配到，继续查找，可以看到 <code>themes/book/_config.yml</code> 中有如下配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">home_page:</span> <span class="string">home.md</span>        <span class="comment"># filepath under /source/</span></span><br><span class="line"><span class="attr">menu_page:</span> <span class="string">menu.md</span>        <span class="comment"># filepath under /source/</span></span><br></pre></td></tr></table></figure>
+<p>原来是根目录下的 source 中缺少 <a target="_blank" rel="noopener" href="http://home.md">home.md</a> 和 <a target="_blank" rel="noopener" href="http://menu.md">menu.md</a> 两个文件，补充上就可以正常运行了。</p>
+<p>现在只能在 nodejs 14 版本运行，和我的主要环境不一致以外，还有 node-sass 的不稳定和编译速度一言难尽。所以需要找到一个</p>
+<h4 id="舍弃-node-sass-拥抱-dart-sass">舍弃 node-sass 拥抱 dart-sass</h4>
+<p>来自官网的警告：</p>
+<blockquote>
+<p><strong>Warning:</strong> <a target="_blank" rel="noopener" href="https://sass-lang.com/blog/libsass-is-deprecated">LibSass and Node Sass are deprecated</a>. While they will continue to receive maintenance releases indefinitely, there are no plans to add additional features or compatibility with any new CSS or Sass features. Projects that still use it should move onto <a target="_blank" rel="noopener" href="https://sass-lang.com/dart-sass">Dart Sass</a>.</p>
+</blockquote>
+<p>除了 node-sass 已经不再维护外，也为了支持更高的 node 版本，所以决定不使用 <code>hexo-renderer-scss</code> 而是使用 dart-sass 的渲染器。</p>
+<p>在 Hexo 的插件市场搜索到一个 <a target="_blank" rel="noopener" href="https://github.com/KentarouTakeda/hexo-renderer-dartsass">hexo-renderer-dartsass</a>，安装使用一切OK。</p>
+<p>hexo-renderer-dartsass 作者也两年没有维护了，为了方便维护，也为了了解下 Hexo Renderer 的使用和开发。所以还是搞了一个自己的渲染器<a target="_blank" rel="noopener" href="https://github.com/iotale/hexo-renderer-dartsass-next">hexo-renderer-dartsass-next</a>。</p>
+<h4 id="改造-hexo-renderer-dartsass">改造 hexo-renderer-dartsass</h4>
+<p>主体是 fork 的 hexo-renderer-dartsass 代码。</p>
+<p>修改的点有：</p>
+<ol>
+<li>
+<p>将 dart-sass 版本升级到了最新，将 <code>sass.render()</code> 替换成 <code>sass.compile()</code></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://sass-lang.com/documentation/js-api/#legacy-api">Legacy API</a></p>
+<p>The legacy API has two entrypoints for compiling Sass to CSS. Each one can compile either a Sass file by passing in LegacyFileOptions or a string of Sass code by passing in a LegacyStringOptions.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://sass-lang.com/documentation/js-api/modules#renderSync">renderSync</a></li>
+<li><a target="_blank" rel="noopener" href="https://sass-lang.com/documentation/js-api/modules#render">render</a></li>
+</ul>
+</blockquote>
+<p>这里开发的时候有个执行速度的点需要关注：</p>
+<blockquote>
+<p>The JavaScript API provides two entrypoints for compiling Sass to CSS, each of which has a synchronous variant that returns a plain <a target="_blank" rel="noopener" href="https://sass-lang.com/documentation/js-api/interfaces/CompileResult">CompileResult</a> and an asynchronous variant that returns a <code>Promise</code>. <strong>The asynchronous variants are much slower,</strong> but they allow custom importers and functions to run asynchronously.</p>
+<p>When using Dart Sass, <strong><a target="_blank" rel="noopener" href="https://sass-lang.com/documentation/js-api/modules#compile">compile</a> is almost twice as fast as <a target="_blank" rel="noopener" href="https://sass-lang.com/documentation/js-api/modules#compileAsync">compileAsync</a></strong>, due to the overhead of making the entire evaluation process asynchronous.</p>
+</blockquote>
+<p>所以核心方法使用的 <code>sass.compile()</code> 而不是 <code>sass.compileStringAsync()</code> ，然后使用 <code>Promise</code> 手动封装并返回<a target="_blank" rel="noopener" href="https://github.com/iotale/hexo-renderer-dartsass-next/blob/4b8a5498095acea5533d3d62d99961b67912cb13/src/renderer.ts#L5">compile</a>。</p>
+<p>插件系统生效代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo.<span class="property">extend</span>.<span class="property">renderer</span>.<span class="title function_">register</span>(<span class="string">&#x27;scss&#x27;</span>, <span class="string">&#x27;css&#x27;</span>, compile);</span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">renderer</span>.<span class="title function_">register</span>(<span class="string">&#x27;sass&#x27;</span>, <span class="string">&#x27;css&#x27;</span>, compile);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>将测试工具从 Jasmine 切换为 Jest</p>
+<p>hexo-renderer-dartsass 使用的是 nodejs + TypeScript 开发，不使用 Babel 而是使用 tsc 构建。</p>
+<p>为了使用 TypeScript 编写 Jest 测试用例，需要使用 <a target="_blank" rel="noopener" href="https://github.com/kulshekhar/ts-jest">ts-jest</a> 作为 TypeScript 预处理器，并且还需要在根目录创建一个配置文件 jest.config.js：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** <span class="doctag">@type</span> &#123;<span class="type">import(&#x27;ts-jest&#x27;).JestConfigWithTsJest</span>&#125; */</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">coverageDirectory</span>: <span class="string">&#x27;coverage&#x27;</span>,</span><br><span class="line">  <span class="attr">preset</span>: <span class="string">&#x27;ts-jest&#x27;</span>,</span><br><span class="line">  <span class="attr">testRegex</span>: <span class="string">&#x27;(/__tests__/.*|(\\.|/)(test|spec))\\.ts$&#x27;</span>,</span><br><span class="line">  <span class="attr">testEnvironment</span>: <span class="string">&#x27;jest-environment-node-single-context&#x27;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里还有注意下 <code>testEnvironment</code> 这个配置项，它的值是一个 npm 依赖 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/jest-environment-node-single-context">jest-environment-node-single-context</a>：</p>
+<p>默认情况下 <code>testEnvironment</code> 的值是 <code>'node'</code>，但是运行测试会报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rejected to value: [TypeError: J.getInterceptor$ax(...).map$1$1 is not a function]</span><br></pre></td></tr></table></figure>
+<p>原因是，Jest 的关键特性之一是<strong>上下文隔离（Jest VM）</strong>，因此测试不会通过操纵全局上下文对其他测试产生副作用。</p>
+<p>但在实践中，Jest 的实现以某种方式混淆了全局类型，这种方式几乎破坏了针对 Uint8Array 等标准类型的测试中的所有 <code>instanceof</code> 检查。</p>
+<p>jest-environment-node-single-context 提供了一个单上下文 Node.js 环境，它通过对所有测试使用单独的上下文，让 Jest 的上下文隔离特性失效，从而使 <code>instanceof</code> 检查可以按预期工作。</p>
+<p>Jest 支持 TypeScript 还需要安装一些依赖：<code>@types/jest</code>、<code>@types/node</code>以及 <code>ts-node</code> 等等。</p>
+<h5 id="几个基本知识">几个基本知识</h5>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">describe</span>(<span class="string">&#x27;my beverage&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">it</span>(<span class="string">&#x27;is delicious&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">expect</span>(myBeverage.<span class="property">delicious</span>).<span class="title function_">toBeTruthy</span>();</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="title function_">test</span>(<span class="string">&#x27;is not sour&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">expect</span>(myBeverage.<span class="property">sour</span>).<span class="title function_">toBeFalsy</span>();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>describe(name, fn)</code> 创建一个将几个相关测试组合在一起的块</li>
+<li><code>test(name, fn, timeout)</code> 别名 <code>it(name, fn, timeout)</code> 运行测试的测试方法</li>
+<li><code>expect</code> 可以使用不同的“匹配器”去验证不同类型的东西</li>
+<li><code>toBeTruthy()</code> 和 <code>toBeFalsy()</code> 就是匹配器</li>
+</ul>
+<h5 id="Jasmine-可以几乎无缝接入-Jest">Jasmine 可以几乎无缝接入 Jest</h5>
+<blockquote>
+<p>Jest 入门推荐查看这篇 <a target="_blank" rel="noopener" href="https://medium.com/bb-tutorials-and-thoughts/how-to-write-unit-tests-in-nodejs-with-jest-test-library-a201658829c7">How To Write Unit Tests In NodeJS With JEST Test Library</a></p>
+</blockquote>
+<p>语法基本一致，除了异步语法有点不同，前者使用 <code>expectAsync()</code> 而后者使用 <code>.resolves</code> 和 <code>.rejects</code>。例如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Jasmine </span></span><br><span class="line"><span class="keyword">await</span> <span class="title function_">expectAsync</span>(fnuc).<span class="title function_">toBeRejectedWithError</span>();</span><br><span class="line"><span class="comment">// Jest</span></span><br><span class="line"><span class="keyword">await</span> <span class="title function_">expect</span>(func).<span class="property">rejects</span>.<span class="title function_">toThrowError</span>();</span><br><span class="line"><span class="keyword">await</span> <span class="title function_">expect</span>(compile.<span class="title function_">call</span>(hexo, data, &#123;&#125;)).<span class="property">resolves</span>.<span class="title function_">toBe</span>(<span class="string">&#x27;html body&#123;width:100%&#125;&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>第一次跑覆盖率，也了解了覆盖率的统计：</p>
+<img src="https://cdn.jsdelivr.net/gh/iotale/pic@master/uPic/image-20230323191224115.png" alt="image-20230323191224115" style="zoom:30%;" />
+<h5 id="一个小插曲：What-is-the-difference-between-‘it’-and-‘test’-in-Jest">一个小插曲：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/45778192/what-is-the-difference-between-it-and-test-in-jest">What is the difference between ‘it’ and ‘test’ in Jest?</a></h5>
+<p>在看 Jest 的文档的时候，发现几乎使用的都是 <code>test()</code> 方法，而 Jasmine 基本使用的都是 <code>it()</code> 方法。但是继续使用 <code>it()</code> 在 Jest 中运行发现并不会报错，而且测试用例运行正常。</p>
+<blockquote>
+<p>The <a target="_blank" rel="noopener" href="https://jestjs.io/docs/api">Jest docs</a> state <a target="_blank" rel="noopener" href="https://jestjs.io/docs/api#testname-fn-timeout"><code>it</code> is an alias of <code>test</code></a>. So they are exactly the same from a functional point of view. They exist both to enable to make a readable English sentence from your test.</p>
+</blockquote>
+<p>意思就是从功能的角度来看，它们是完全一样的。它们的存在都是为了让测试能够形成可读的英语句子。</p>
+</li>
+</ol>
+<h5 id="Hexo-插件系统">Hexo 插件系统</h5>
+<p>主题内有一个 scripts 的目录，这是一种 Hexo 插件（另一种是上面提到的 npm 依赖形式，以 <code>hexo-</code> 开头的包），在启动时会自动载入 scripts 里面的脚本。</p>
+<p>除了 <code>/themes/xxx/scripts</code> 还可以将简单插件放在根目录 <code>/scripts</code> 下。</p>
+<p>这种插件系统核心的功能其实就是修改 Hexo 源代码或编写插件，可以查看 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/api/">Hexo API</a>。</p>
+<h5 id="Hexo-扩展">Hexo 扩展</h5>
+<p>不过我觉得 Hexo 最有魅力的是它的扩展，通过扩展我们可以和 Hexo 做直接交互，几乎可以做任何自定义的行为。</p>
+<p>举例来说，把标题转为小写：</p>
+<p>我们可以在插件脚本中使用<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/api/filter">过滤器</a>这个扩展来实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;before_post_render&#x27;</span>, <span class="keyword">function</span>(<span class="params">data</span>)&#123;</span><br><span class="line">  data.<span class="property">title</span> = data.<span class="property">title</span>.<span class="title function_">toLowerCase</span>();</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>过滤器用于修改特定文件，Hexo 将这些文件依序传给过滤器，而过滤器可以针对文件进行修改，这个概念借鉴自 WordPress。</p>
+</blockquote>
+<h3 id="换掉默认的-Markdown-渲染器-hexo-renderer-markd">换掉默认的 Markdown 渲染器 hexo-renderer-markd</h3>
+<p>为了更好的支持 footnote 和 katex或latex 等语法，可以将默认的 markdown 渲染器更换为 hexo-renderer-markdown-it，主要是 markdown-it 有丰富且命名清晰的插件供 hexo 使用。</p>
+<h4 id="安装插件">安装插件</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm add markdown-it-abbr markdown-it-checkbox markdown-it-container markdown-it-deflist markdown-it-emoji markdown-it-footnote markdown-it-imsize markdown-it-ins markdown-it-katex markdown-it-mark markdown-it-regexp markdown-it-sub markdown-it-sup</span><br></pre></td></tr></table></figure>
+<p>在 site 的 <code>_config.yml</code> 中添加渲染配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">render:</span></span><br><span class="line">    <span class="attr">html:</span> <span class="literal">true</span> <span class="comment"># Doesn&#x27;t escape HTML content so the tags will appear as html.</span></span><br><span class="line">    <span class="attr">xhtmlOut:</span> <span class="literal">false</span> <span class="comment"># Parser will not produce XHTML compliant code.</span></span><br><span class="line">    <span class="attr">breaks:</span> <span class="literal">true</span> <span class="comment"># Parser produces `&lt;br&gt;` tags every time there is a line break in the source document.</span></span><br><span class="line">    <span class="attr">linkify:</span> <span class="literal">true</span> <span class="comment"># Returns text links as text.</span></span><br><span class="line">    <span class="attr">typographer:</span> <span class="literal">true</span> <span class="comment"># Substitution of common typographical elements will take place.</span></span><br><span class="line">    <span class="attr">quotes:</span> <span class="string">&#x27;“”‘’&#x27;</span> <span class="comment"># &quot;double&quot; will be turned into “single”</span></span><br><span class="line">                   <span class="comment"># &#x27;single&#x27; will be turned into ‘single’</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-abbr</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-container</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-deflist</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-emoji</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-footnote</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-imsize</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-ins</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-mark</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-regexp</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-sub</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-sup</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-checkbox</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-katex</span></span><br><span class="line">  <span class="attr">anchors:</span></span><br><span class="line">    <span class="comment"># Minimum level for ID creation. (Ex. h2 to h6)</span></span><br><span class="line">    <span class="attr">level:</span> <span class="number">1</span></span><br><span class="line">    <span class="comment"># A suffix that is prepended to the number given if the ID is repeated.</span></span><br><span class="line">    <span class="attr">collisionSuffix:</span> <span class="string">&#x27;v&#x27;</span></span><br><span class="line">    <span class="comment"># If `true`, creates an anchor tag with a permalink besides the heading.</span></span><br><span class="line">    <span class="attr">permalink:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># Class used for the permalink anchor tag.</span></span><br><span class="line">    <span class="attr">permalinkClass:</span> <span class="string">header-anchor</span></span><br><span class="line">    <span class="comment"># The symbol used to make the permalink</span></span><br><span class="line">    <span class="attr">permalinkSymbol:</span> <span class="string">&#x27;# &#x27;</span></span><br></pre></td></tr></table></figure>
+<p>问题排查：</p>
+<h5 id="markdown-it-未生效">markdown-it 未生效</h5>
+<p>原因是没有卸载默认安装的 hexo-renderer-marked。</p>
+<h5 id="markdown-it-katex-样式问题">markdown-it-katex 样式问题</h5>
+<p>原本的 markdown-it-katex 样式有问题：</p>
+<img src="https://cdn.jsdelivr.net/gh/iotale/pic@master/uPic/image-20230324223954425.png" alt="image-20230324223954425" style="zoom:33%;" />
+<p>替换成 @iktakahiro/markdown-it-katex 后正常渲染了：</p>
+<img src="https://cdn.jsdelivr.net/gh/iotale/pic@master/uPic/image-20230325152237456.png" alt="image-20230325152237456" style="zoom: 50%;" />
+<blockquote>
+<p>注意，在配置文件中要加上引号 <code>- '@iktakahiro/markdown-it-katex'</code> ，因为 <code>@</code> 在 yml 中属于保留关键字符。</p>
+</blockquote>
+<h5 id="markdown-it-container-未生效">markdown-it-container 未生效</h5>
+<img src="https://cdn.jsdelivr.net/gh/iotale/pic@master/uPic/image-20230325154713730.png" alt="image-20230325154713730" style="zoom:50%;" />
+<p>使用这个插件还需要修改两处地方：</p>
+<ul>
+<li>
+<p>需要在主题内增加样式支持</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.note</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> md-container(#<span class="number">6</span>ab0de, #e7f2fa)</span><br><span class="line">&#125;</span><br><span class="line">.tip &#123;</span><br><span class="line">  <span class="keyword">@include</span> md-container(#<span class="number">1</span>abc9c, #dbfaf4)</span><br><span class="line">&#125;</span><br><span class="line">/* ... */</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>在 site 的 _config.yal 配置中添加自定义块的声明</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">markdwon:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">markdown-it-container</span></span><br><span class="line">      <span class="attr">options:</span> <span class="string">note</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">markdown-it-container</span></span><br><span class="line">      <span class="attr">options:</span> <span class="string">tip</span></span><br><span class="line"><span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/iotale/pic@master/uPic/image-20230325155905693.png" alt="image-20230325155905693" style="zoom:50%;" />
+<h3 id="配置评论系统">配置评论系统</h3>
+<p>book 主题推荐了三款评论系统：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/utterance/utterances">utterances</a></li>
+<li><a target="_blank" rel="noopener" href="https://disqus.com/">disqus</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk">gitalk</a></li>
+</ul>
+<p>gittalk 和 utterances 的样式都很 Github。不过由于该主题使用 gittalk 需要将 githubId 和 GitHub Application Client ID 公开放在代码里。所以还是选择了 utterances 。</p>
+<p>按照 <a target="_blank" rel="noopener" href="https://utteranc.es/">utterances </a> 的使用指南，很轻松就能使用起来：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iotale/pic@master/uPic/image-20230325210319189.png" alt="image-20230325210319189"></p>
+<p>最后，这个主题的 <a target="_blank" rel="noopener" href="https://marketingplatform.google.com/about/analytics/?hl=zh-CN">google_analytics </a> 代码有点古老（无法收集数据），简单升级了下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.google_analytics)&#123; %&gt;</span><br><span class="line">&lt;!-- Google Analytics --&gt;</span><br><span class="line">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=&#x27;&lt;%= theme.google_analytics %&gt;&#x27;&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  window.dataLayer = window.dataLayer || [];</span><br><span class="line">  function gtag()&#123;dataLayer.push(arguments);&#125;</span><br><span class="line">  gtag(&#x27;js&#x27;, new Date());</span><br><span class="line">  gtag(&#x27;config&#x27;, &#x27;&lt;%= theme.google_analytics %&gt;&#x27;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;!-- End Google Analytics --&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Github-Action">Github Action</h2>
+<blockquote>
+<p>GitHub Actions 是一种持续集成和持续交付 (CI/CD) 平台，可用于自动执行生成、测试和部署管道。</p>
+<p>GitHub Actions 不仅仅是 DevOps，还允许您在存储库中发生其他事件时运行工作流程。 例如，您可以运行工作流程，以便在有人在您的存储库中创建新问题时自动添加相应的标签。</p>
+</blockquote>
+<h4 id="发布-node-模块到-npm"><a target="_blank" rel="noopener" href="https://docs.github.com/zh/actions/publishing-packages/publishing-nodejs-packages#introduction">发布 node 模块到 npm</a></h4>
+<p>创建一个 <a target="_blank" rel="noopener" href="https://github.com/iotale/hexo-renderer-dartsass-next/blob/main/.github/workflows/npm-publish.yml">npm-publish.yml</a> 的 Action：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">xxxx</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">release:</span></span><br><span class="line">    <span class="attr">types:</span> [<span class="string">created</span>]</span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
+<p>其中 <code>on</code> 指定此工作流程的触发器。上面的代码使用 <code>release</code> 的 <code>created</code> 事件，也就是当新的 <code>release</code> 发布后，就会触发改工作流。</p>
+<p>另外不要忘了配置 npm 发布的 token：</p>
+<img src="https://cdn.jsdelivr.net/gh/iotale/pic@master/uPic/image-20230325222623650.png" alt="image-20230325222623650" style="zoom:33%;" />
+<h4 id="Github-workflow">Github workflow</h4>
+<p>工作流程是一个可配置的自动化过程，它将运行一个或多个作业。 工作流程由签入到存储库的 YAML 文件定义，并在存储库中的事件触发时运行，也可以手动触发，或按定义的时间表触发。</p>
+<p>工作流程在存储库的 <code>.github/workflows</code> 目录中定义，存储库可以有多个工作流程，每个工作流程都可以执行不同的任务集。 例如，您可以有一个工作流程来构建和测试拉取请求，另一个工作流程用于在每次创建发布时部署应用程序，还有一个工作流程在每次有人打开新议题时添加标签。</p>
+<h2 id="Github-Pages">Github Pages</h2>
+<h3 id="xxx-github-io"><a target="_blank" rel="noopener" href="http://xxx.github.io">xxx.github.io</a></h3>
+<p>xxx 必须和用户登录名一致，而不是昵称，如下图所示登录名是 <code>iotale</code>，所以这个仓库应该是 <code>iotale.github.io</code></p>
+<img src="https://cdn.jsdelivr.net/gh/iotale/pic@master/uPic/image-20230325215056158.png" alt="image-20230325215056158" style="zoom:50%;" />
+<h4 id="如何部署">如何部署</h4>
+<p>如果没有启用特殊的 Gtihub Action 的话，设置里最好将 Github Pages 的部署方式修改为下面的格式，否则会出现 404 的情况。</p>
+<img src="https://cdn.jsdelivr.net/gh/iotale/pic@master/uPic/image-20230325215605643.png" alt="image-20230325215605643" style="zoom:50%;" />
+<h4 id="工作流文件细节">工作流文件细节</h4>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="comment"># Runs on pushes targeting the default branch</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span> [<span class="string">&quot;main&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">deploy:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">permissions:</span></span><br><span class="line">      <span class="attr">contents:</span> <span class="string">write</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v3</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">16</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v3.6.0</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&quot;16&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cache</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/cache@v2.1.8</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">node_modules</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">$&#123;&#123;</span> <span class="string">runner.OS</span> <span class="string">&#125;&#125;-npm-cache</span></span><br><span class="line">          <span class="attr">restore-keys:</span> <span class="string">|</span></span><br><span class="line"><span class="string">            $&#123;&#123; runner.OS &#125;&#125;-npm-cache</span></span><br><span class="line"><span class="string"></span>      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">Dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">GitHub</span> <span class="string">Pages</span> <span class="string">action</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v3.9.2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">github_token:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITHUB_TOKEN</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>一定要注意下面这个配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permissions:</span></span><br><span class="line">  <span class="attr">contents:</span> <span class="string">write</span></span><br></pre></td></tr></table></figure>
+<p>否则在跑 Action 的时候就会报错 <code>github action: Permission to git denied to github-actions</code>。</p>
+<p>因为 <code>peaceiris/actions-gh-pages@v3.9.2</code> 需要这个权限：</p>
+<blockquote>
+<p>Note that the <code>GITHUB_TOKEN</code> that is created by the runner might not inherently have push/publish privileges on GHES. You might need to create/request a technical user with write permissions to your target repository.</p>
+</blockquote>
+</li>
+<li>
+<p><code>GITHUB_TOKEN</code></p>
+<blockquote>
+<p>Note that the <code>GITHUB_TOKEN</code> is <strong>NOT</strong> a personal access token. A GitHub Actions runner automatically creates a <code>GITHUB_TOKEN</code> secret to authenticate in your workflow. So, you can start to deploy immediately without any configuration.</p>
+</blockquote>
+<p>在每个工作流程运行开始时，GitHub 会自动创建唯一的 <code>GITHUB_TOKEN</code> 机密以在工作流程中使用。 可以使用 <code>GITHUB_TOKEN</code> 在工作流程运行中进行身份验证。</p>
+<p><strong>这个 token 不需要用户创建，也不需要去环境变量中配置</strong>，使用的时候直接 <code>$&#123;&#123; secrets.GITHUB_TOKEN &#125;&#125;</code> 就可以获取到。</p>
+</li>
+</ul>
+<h2 id="后续">后续</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.oplog.cn/qexo/">静态博客管理器Qexo</a>，将文章、页面、配置索引一键缓存至数据库，更优雅地进行文章编辑</li>
+<li>同步部署 vercel</li>
+</ul>
+
+</div>
+
+
+  <div class="book-comments">
+    
+<script src="https://utteranc.es/client.js"
+        repo="iotale/iotale.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/images/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>Ale</div>
+      <div>2023-03-20</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      
+
+      <a class="tag-none-link" href="/tags/Hexo-Jest-Github-Action/" rel="tag">#Hexo,Jest,Github Action</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

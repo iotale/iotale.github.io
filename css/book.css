@@ -216,6 +216,36 @@ img {
 .off-canvas-content .book-content .book-post .attention ul:last-child {
   margin-bottom: 0;
 }
+.off-canvas-content .book-content .book-post .warning {
+  margin: 1.125rem 1.125rem 1.125rem 0;
+  padding: 0.2rem 1rem;
+  background-color: #fff6cd;
+  border-left: 0.1rem solid #ff8;
+}
+.off-canvas-content .book-content .book-post .warning p {
+  margin-bottom: 0.5rem;
+}
+.off-canvas-content .book-content .book-post .warning p:last-child {
+  margin-bottom: 0;
+}
+.off-canvas-content .book-content .book-post .warning ul:last-child {
+  margin-bottom: 0;
+}
+.off-canvas-content .book-content .book-post .danger {
+  margin: 1.125rem 1.125rem 1.125rem 0;
+  padding: 0.2rem 1rem;
+  background-color: #fdd2d0;
+  border-left: 0.1rem solid #f32013;
+}
+.off-canvas-content .book-content .book-post .danger p {
+  margin-bottom: 0.5rem;
+}
+.off-canvas-content .book-content .book-post .danger p:last-child {
+  margin-bottom: 0;
+}
+.off-canvas-content .book-content .book-post .danger ul:last-child {
+  margin-bottom: 0;
+}
 .off-canvas-content .book-content .book-post .video-container {
   position: relative;
   margin-bottom: 1.5rem;
